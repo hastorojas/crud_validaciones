@@ -1,4 +1,5 @@
 using CRUD_validaciones.Datos;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -8,6 +9,10 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
                                                     options.UseSqlServer(
                                                         builder.Configuration.GetConnectionString("DefaultConnection"))
                                                     );
+
+// Identity: registro y login de usuarios
+builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+    .AddEntityFrameworkStores<ApplicationDbContext>();
 
 builder.Services.AddControllersWithViews();
 
@@ -26,10 +31,14 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
+
+// Páginas Razor de Identity (Login, Register, etc.)
+app.MapRazorPages();
 
 app.Run();

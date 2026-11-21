@@ -5,7 +5,7 @@
 namespace CRUD_validaciones.Migrations
 {
     /// <inheritdoc />
-    public partial class _0711 : Migration
+    public partial class cargaInicial : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

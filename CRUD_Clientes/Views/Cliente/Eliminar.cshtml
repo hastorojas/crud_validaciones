@@ -1,0 +1,29 @@
+@model CRUD_Clientes.Models.Cliente
+@{
+    ViewData["Title"] = "Eliminar cliente";
+}
+
+<h1>Eliminar</h1>
+
+<div class="border p-3">
+    <h2 class="text-danger">¿Seguro que desea eliminar este cliente?</h2>
+
+    <dl class="row">
+        <dt class="col-sm-3">Nombre</dt>
+        <dd class="col-sm-9">@Model.Nombre</dd>
+        <dt class="col-sm-3">Tipo de documento</dt>
+        <dd class="col-sm-9">@Model.TipoDocumento</dd>
+        <dt class="col-sm-3">Documento</dt>
+        <dd class="col-sm-9">@Model.Documento</dd>
+        <dt class="col-sm-3">Celular</dt>
+        <dd class="col-sm-9">@Model.Celular</dd>
+        <dt class="col-sm-3">Dirección</dt>
+        <dd class="col-sm-9">@Model.Direccion</dd>
+    </dl>
+
+    <form method="post" asp-action="EliminarConfirmado">
+        <input type="hidden" name="Id" value="@Model.Id" />
+        <button type="submit" class="btn btn-danger">Eliminar</button>
+        <a asp-controller="Cliente" asp-action="Index" class="btn btn-success">Regresar</a>
+    </form>
+</div>

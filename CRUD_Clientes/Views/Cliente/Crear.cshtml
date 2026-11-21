@@ -1,0 +1,24 @@
+@model CRUD_Clientes.Models.Cliente
+@{
+    ViewData["Title"] = "Crear cliente";
+}
+
+<h1>Crear</h1>
+
+<form method="post" asp-action="Crear">
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <h2 class="text-info">Nuevo Cliente</h2>
+
+        <partial name="_CamposCliente" model="Model" />
+
+        <div class="d-grid gap-2 d-md-block">
+            <button type="submit" class="btn btn-primary">Crear</button>
+            <a asp-controller="Cliente" asp-action="Index" class="btn btn-success">Regresar</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

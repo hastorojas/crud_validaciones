@@ -1,0 +1,25 @@
+@model CRUD_Clientes.Models.Cliente
+@{
+    ViewData["Title"] = "Editar cliente";
+}
+
+<h1>Editar</h1>
+
+<form method="post" asp-action="Editar">
+    <input asp-for="Id" hidden />
+    <div class="border p-3">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <h2 class="text-info">Editar Cliente</h2>
+
+        <partial name="_CamposCliente" model="Model" />
+
+        <div class="d-grid gap-2 d-md-block">
+            <button type="submit" class="btn btn-primary">Actualizar</button>
+            <a asp-controller="Cliente" asp-action="Index" class="btn btn-success">Regresar</a>
+        </div>
+    </div>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

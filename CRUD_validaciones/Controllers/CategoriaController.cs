@@ -1,5 +1,6 @@
 ﻿using CRUD_validaciones.Datos;
 using CRUD_validaciones.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace CRUD_validaciones.Controllers
@@ -21,12 +22,14 @@ namespace CRUD_validaciones.Controllers
         }
 
         //Get Crear
+        [Authorize]
         public IActionResult Crear()
         {
             return View();
         }
 
         //Post Crear
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Crear(Categoria categoria)
@@ -41,6 +44,7 @@ namespace CRUD_validaciones.Controllers
         }
 
         //Get Editar
+        [Authorize]
         public IActionResult Editar(int? Id)
         {
             if (Id == null || Id == 0)
@@ -56,6 +60,7 @@ namespace CRUD_validaciones.Controllers
         }
 
         //Post Editar
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Editar(Categoria categoria)
@@ -70,6 +75,7 @@ namespace CRUD_validaciones.Controllers
         }
 
         //Get Eliminar
+        [Authorize]
         public IActionResult Eliminar(int? Id)
         {
             if (Id == null || Id == 0)
@@ -85,6 +91,7 @@ namespace CRUD_validaciones.Controllers
         }
 
         //Post Eliminar
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public IActionResult Eliminar(Categoria categoria)
